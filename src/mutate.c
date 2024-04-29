@@ -16,16 +16,10 @@ void	rotate(t_fdf *data, int key)
 {
 	if (key == 43)
 	{
-		if (data->scale == 1)
-			data->scale = 0.1;
-		else
 			data->scale += 0.1;
 	}
 	else
 	{
-		if (data->scale == 0)
-			data->scale = 1;
-		else
 			data->scale -= 0.1;
 	}
 }
@@ -34,9 +28,6 @@ void	zoom(t_fdf *data, int key)
 {
 	if (key == 41)
 	{
-		if (data->zoom >= 200)
-			data->zoom = 200;
-		else
 			data->zoom += 5;
 	}
 	if (key == 39)
