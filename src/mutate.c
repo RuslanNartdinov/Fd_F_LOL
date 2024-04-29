@@ -1,6 +1,6 @@
 #include "fd_f.h"
 
-void	shift_xy(fdf *data, int key)
+void	shift_xy(t_fdf *data, int key)
 {
 	if(key == 126)
 		data->shift_y-=10;
@@ -11,7 +11,7 @@ void	shift_xy(fdf *data, int key)
 	if(key == 124)
 		data->shift_x+=10;
 }
-void	change_z(fdf *data, int key)
+void	change_z(t_fdf *data, int key)
 {
 	int i;
 	int j;

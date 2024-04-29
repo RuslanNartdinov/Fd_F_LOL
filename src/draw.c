@@ -1,18 +1,18 @@
 #include "fd_f.h"
 
-void	add_zoom(float *x, float *y, fdf *data)
+void	add_zoom(float *x, float *y, t_fdf *data)
 {
 	*x *= data->zoom;
 	*y *= data->zoom;
 }
 
-void	add_shift(float *x, float *y, fdf *data)
+void	add_shift(float *x, float *y, t_fdf *data)
 {
 	*x += data->shift_x;
 	*y += data->shift_y;
 }
 
-void	color_choose(int z, int z1, fdf *data)
+void	color_choose(int z, int z1, t_fdf *data)
 {
 	if (z > 0 || z1 > 0)
 		data->color = 0xe80c0c;
@@ -20,7 +20,7 @@ void	color_choose(int z, int z1, fdf *data)
 		data->color = 0xffffff;
 }
 
-void	bresenham_draw(float x, float y, float x1, float y1, fdf *data)
+void	bresenham_draw(float x, float y, float x1, float y1, t_fdf *data)
 {
 	float	x_step;
 	float	y_step;
@@ -46,7 +46,7 @@ void	bresenham_draw(float x, float y, float x1, float y1, fdf *data)
 	}
 }
 
-void	draw_map(fdf *data)
+void	draw_map(t_fdf *data)
 {
 	int	x;
 	int	y;
