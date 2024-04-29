@@ -1,4 +1,5 @@
 #include <math.h>
+#include "fd_f.h"
 
 float	max(float first, float second)
 {
@@ -16,8 +17,8 @@ float	module(float num)
 		return (num * -1);
 }
 
-void	isometric(float *x, float *y, int z)
+void	isometric(float *x, float *y, int z, t_fdf *data)
 {
-	*x = (*x - *y) * cos(0.8);
-	*y = (*x + *y) * sin(0.8) - z;
+	*x = (*x - *y) * cos(data->scale);
+	*y = (*x + *y) * sin(data->scale) - z;
 }
