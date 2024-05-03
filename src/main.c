@@ -20,6 +20,21 @@ int	deal_key(int key, t_fdf *data)
 	return (0);
 }
 
+void clean_struct(t_fdf *data){
+	if (data)
+    {
+        if (data->z_matrix)
+        {
+            for (int i = 0; i < data->height; i++)
+            {
+                free(data->z_matrix[i]);
+            }
+            free(data->z_matrix);
+        }
+        free(data);
+    }
+}
+
 int	main(int argc, char **argv)
 {
 	t_fdf	*data;
@@ -35,4 +50,5 @@ int	main(int argc, char **argv)
 	draw_map(data);
 	mlx_key_hook(data->win_ptr, deal_key, data);
 	mlx_loop(data->mlx_ptr);
+	clean_struct(data);
 }

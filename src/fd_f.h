@@ -1,6 +1,6 @@
 #ifndef FD_F_H
 # define FD_F_H
-# include "../minilibx_macos/mlx.h"
+# include "../mlx/mlx.h"
 # include "../helpers/helpers.h"
 
 typedef struct s_fdf

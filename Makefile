@@ -15,12 +15,15 @@ OBJ = $(SRC:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
 CC = cc
 NAME = fdf
+MAKE_MLX = cd mlx && make
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	${CC} ${CFLAGS} ${OBJ} -o $(NAME)
+	$(MAKE_MLX) 
+	${CC} ${CFLAGS} ${OBJ} -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 clean:
 	rm -f $(OBJ)
+	$(MAKE) clean -C mlx
 fclean: clean
 	rm -f $(NAME)
 
