@@ -7,16 +7,21 @@ int	get_height(char *file_name)
 	int		height;
 
 	fd = open(file_name, O_RDONLY, 0);
+	printf("\n------------GET_HEIGHT------------\n");
+	printf("Getting height...\n");
+	printf("File descriptor: %d\n", fd);
 	height = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
+		printf("The line is: %s\n", line);
 		if (line == NULL || !line)
 			break ;
 		height++;
 		free(line);
 	}
 	close(fd);
+	printf("\n------------GET_HEIGHT------------\n");
 	return (height);
 }
 
@@ -45,13 +50,25 @@ int	get_width(char *file_name)
 
 	fd = open(file_name, O_RDONLY, 0);
 	line = get_next_line(fd);
+	printf("\n------------GET_WIDTH------------\n");
+	printf("Getting width...\n");
+	printf("File descriptor: %d\n", fd);
+	printf("The line is: %s\n", line);
 	splitted_line = ft_split(line, ' ');
 	free(line);
 	width = 0;
 	while (splitted_line[width])
 		width++;
+	while(1){
+		line = get_next_line(fd);
+		if(!line)
+			break;
+		free(line);
+	}
+	printf("The length of the line is: %d\n", width);
 	free_split(splitted_line);
 	close(fd);
+	printf("------------GET_WIDTH------------\n\n");
 	return (width);
 }
 
@@ -85,15 +102,21 @@ void	read_file(char *file_name, t_fdf *data)
 		data->z_matrix[iter++] = (int *)malloc(sizeof(int) * (data->width + 1));
 	fd = open(file_name, O_RDONLY, 0);
 	iter = 0;
+	printf("\n------------FILLING_Z-MATRIX------------\n");
 	while (1)
 	{
 		line = get_next_line(fd);
+		printf("the line is: %s\n", line);
 		if (!line)
+		{
+			free(line);
 			break ;
+		}
 		fill_matrix(data->z_matrix[iter], line);
 		free(line);
 		iter++;
 	}
 	data->z_matrix[iter] = NULL;
+	printf("\n------------FILLING_Z-MATRIX------------\n");
 	close(fd);
 }

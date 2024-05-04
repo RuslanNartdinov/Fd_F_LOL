@@ -35,12 +35,31 @@ void clean_struct(t_fdf *data){
     }
 }
 
+void print_map(t_fdf *data)
+{
+	int i = 0;
+	int j;
+	printf("height: %d, width: %d\n", data->height, data->width);
+	while(i < data->height)
+	{
+		j = 0;
+		while(j < data->width)
+		{
+			printf("%d ", (data->z_matrix)[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_fdf	*data;
 
 	data = (t_fdf *)malloc(sizeof(t_fdf));
 	read_file(argv[1], data);
+	//print_map(data);
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, 1000, 1000, "FDF");
 	data->zoom = 20 + argc - argc;

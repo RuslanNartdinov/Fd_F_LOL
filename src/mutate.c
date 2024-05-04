@@ -32,9 +32,6 @@ void	zoom(t_fdf *data, int key)
 	}
 	if (key == 39)
 	{
-		if (data->zoom <= 10)
-			data->zoom = 10;
-		else
 			data->zoom -= 5;
 	}
 }
