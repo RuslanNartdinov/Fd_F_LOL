@@ -36,6 +36,7 @@ int	deal_key(int key, t_fdf *data)
 	if (key == 41 || key == 39)
 		zoom(data, key);
 	mlx_destroy_image(data->mlx_ptr,data->mlx.img);
+	mlx_clear_window(data->mlx_ptr,data->mlx.img);
 	data->mlx.img = mlx_new_image(data->mlx_ptr, data->win_width, data->win_length);
 	data->mlx.addr = mlx_get_data_addr(data->mlx.img, &data->mlx.bits_per_pixel, &data->mlx.line_length, &data->mlx.endian);
 	draw_map(data);
