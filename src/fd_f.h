@@ -2,6 +2,14 @@
 # define FD_F_H
 # include "../mlx/mlx.h"
 # include "../helpers/helpers.h"
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
 
 typedef struct s_fdf
 {
@@ -12,10 +20,15 @@ typedef struct s_fdf
 	int		color;
 	int		shift_x;
 	int		shift_y;
+	int		win_width;
+	int		win_length;
+	t_data	mlx;
+
 	void	*mlx_ptr;
 	void	*win_ptr;
 	float	scale;
 }	t_fdf;
+
 
 void	read_file(char *file_name, t_fdf *data);
 void	bresenham_draw(float x, float y, float x1, float y1, t_fdf *data);

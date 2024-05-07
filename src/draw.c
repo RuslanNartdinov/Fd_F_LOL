@@ -20,6 +20,24 @@ void	color_choose(int z, int z1, t_fdf *data)
 		data->color = 0xffffff;
 }
 
+void	my_mlx_pixel_put(t_fdf *data, int x, int y, int color)
+{
+	char	*dst;
+
+	x += data->win_width / 2;
+	y += data->win_length / 2;
+	if ((x >= 0 && y >= 0) && \
+			(x < data->win_width && y < data->win_length))
+	{
+		dst = data->mlx.addr + (y * data->mlx.line_length+ x * \
+				(data->mlx.bits_per_pixel / 8));
+		*(unsigned int *)dst = color;
+	}
+}
+
+
+
+
 void	bresenham_draw(float x, float y, float x1, float y1, t_fdf *data)
 {
 	float	x_step;
@@ -42,7 +60,7 @@ void	bresenham_draw(float x, float y, float x1, float y1, t_fdf *data)
 	y_step = (y1 - y) / max(module(x1 - x), module(y1 - y));
 	while ((int)(x - x1) || (int)(y - y1))
 	{
-		mlx_pixel_put(data->mlx_ptr, data->win_ptr, x, y, data->color);
+		my_mlx_pixel_put(data, x, y, data->color);
 		x += x_step;
 		y += y_step;
 	}
