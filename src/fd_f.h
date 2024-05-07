@@ -18,10 +18,14 @@ typedef struct s_fdf
 	int		**z_matrix;
 	int		zoom;
 	int		color;
+	int		x;
+	int		y;
 	int		shift_x;
 	int		shift_y;
 	int		win_width;
 	int		win_length;
+	int		img_width;
+	int		img_length;
 	t_data	mlx;
 
 	void	*mlx_ptr;

@@ -28,11 +28,11 @@ void	zoom(t_fdf *data, int key)
 {
 	if (key == 41)
 	{
-			data->zoom += 5;
+		data->zoom += 4;
 	}
 	if (key == 39)
 	{
-			data->zoom -= 5;
+		data->zoom -= 4;
 	}
 }
 

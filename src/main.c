@@ -37,10 +37,10 @@ int	deal_key(int key, t_fdf *data)
 		zoom(data, key);
 	mlx_destroy_image(data->mlx_ptr,data->mlx.img);
 	mlx_clear_window(data->mlx_ptr,data->win_ptr);
-	data->mlx.img = mlx_new_image(data->mlx_ptr, data->win_width, data->win_length);
+	data->mlx.img = mlx_new_image(data->mlx_ptr, data->img_width, data->img_length);
 	data->mlx.addr = mlx_get_data_addr(data->mlx.img, &data->mlx.bits_per_pixel, &data->mlx.line_length, &data->mlx.endian);
 	draw_map(data);
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->mlx.img, data->shift_x, data->shift_y);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->mlx.img, data->x, data->y);
 	return (0);
 }
 
@@ -75,22 +75,28 @@ int	main(int argc, char **argv)
 {
 	t_fdf	*data;
 
+	(void)argc;
 	data = (t_fdf *)malloc(sizeof(t_fdf));
-	read_file(argv[1], data);
 	//print_map(data);
 	data->win_width = 1000;
 	data->win_length = 1000;
-	data->zoom = 20 + argc - argc;
+	data->img_width = 1000;
+	data->img_length = 1000;
+	data->zoom = 10;
 	data->scale = 0.8;
 	data->shift_x = 0;
 	data->shift_y = 0;
+	data->x = 0;
+	data->y = 0;
+
+	read_file(argv[1], data);
 	
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, data->win_width, data->win_length, "FDF");
-	data->mlx.img = mlx_new_image(data->mlx_ptr, data->win_width, data->win_length);
+	data->mlx.img = mlx_new_image(data->mlx_ptr, data->img_width, data->img_length);
 	data->mlx.addr = mlx_get_data_addr(data->mlx.img, &data->mlx.bits_per_pixel, &data->mlx.line_length, &data->mlx.endian);
 	draw_map(data);
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->mlx.img, data->shift_x, data->shift_y);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->mlx.img, data->x, data->y);
 	mlx_key_hook(data->win_ptr, deal_key, data);
 	mlx_hook(data->win_ptr, 17, 1L<<0, close_win, data);
 	mlx_loop(data->mlx_ptr);
