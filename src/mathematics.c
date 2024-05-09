@@ -1,6 +1,22 @@
 #include <math.h>
 #include "fd_f.h"
 
+void	initial_zoom(t_fdf *data)
+{
+	if (data->height > 355 || data->width > 800)
+		data->zoom = 1;
+	else if (data->height > 280 || data->width > 600)
+		data->zoom = 2;
+	else if (data->height > 175 || data->width > 400)
+		data->zoom = 3;
+	else if (data->height > 105 || data->width > 200)
+		data->zoom = 4;
+	else if (data->height > 70 || data->width > 100)
+		data->zoom = 5;
+	else if (data->height > 35 || data->width > 50)
+		data->zoom = 10;
+}
+
 float	max(float first, float second)
 {
 	if (first >= second)

@@ -7,9 +7,9 @@ t_fdf	*struct_init(char *argv_1)
 	data = (t_fdf *)malloc(sizeof(t_fdf));
 	data->win_width = 1000;
 	data->win_length = 1000;
-	data->zoom = 10;
+	data->zoom = 20;
 	data->scale = 0.8;
-	data->shift_x = 0;
+	data->shift_x = -70;
 	data->shift_y = 0;
 	data->x = 0;
 	data->y = 0;

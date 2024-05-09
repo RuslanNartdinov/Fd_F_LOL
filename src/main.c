@@ -88,8 +88,7 @@ int	main(int argc, char **argv)
 
 	(void)argc;
 	data = struct_init(argv[1]);
-	if (data->height > 100 || data->width > 100)
-		data->zoom = 5;
+	initial_zoom(data);
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, data->win_width,
 			data->win_length, "FDF");

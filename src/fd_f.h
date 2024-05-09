@@ -59,4 +59,5 @@ int		get_width(char *file_name);
 int		get_length(char **splitted_line);
 void	add_zoom(float *x, float *y, t_fdf *data);
 t_fdf	*struct_init(char *argv_1);
+void	initial_zoom(t_fdf *data);
 #endif
