@@ -90,6 +90,20 @@ int	main(int argc, char **argv)
 	data->y = 0;
 
 	read_file(argv[1], data);
+
+	if(data->height > 100 || data->width > 100)
+	{
+		data->zoom = 5;
+	}
+
+	printf("Printing colors...\n");
+	for(int i = 0; i < data->height; i++){
+		for(int j = 0; j < data->height; j++){
+			printf("%d ",data->color_matrix[i][j]);
+		}
+		printf("\n");
+	}
+	
 	
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, data->win_width, data->win_length, "FDF");

@@ -50,10 +50,10 @@ int	get_width(char *file_name)
 
 	fd = open(file_name, O_RDONLY, 0);
 	line = get_next_line(fd);
-	printf("\n------------GET_WIDTH------------\n");
-	printf("Getting width...\n");
-	printf("File descriptor: %d\n", fd);
-	printf("The line is: %s\n", line);
+	//printf("\n------------GET_WIDTH------------\n");
+	//printf("Getting width...\n");
+	//printf("File descriptor: %d\n", fd);
+	//printf("The line is: %s\n", line);
 	splitted_line = ft_split(line, ' ');
 	free(line);
 	width = 0;
@@ -65,23 +65,46 @@ int	get_width(char *file_name)
 			break;
 		free(line);
 	}
-	printf("The length of the line is: %d\n", width);
+	//printf("The length of the line is: %d\n", width);
 	free_split(splitted_line);
 	close(fd);
-	printf("------------GET_WIDTH------------\n\n");
+	//printf("------------GET_WIDTH------------\n\n");
 	return (width);
 }
 
-void	fill_matrix(int *z_line, char *line)
+int get_length(char **splitted_line)
+{
+	int size;
+
+	size = 0;
+	while(splitted_line[size])
+		size++;
+	return (size);
+}
+
+void	fill_matrix(int *z_line, int *color_line, char *line)
 {
 	char	**nums;
+	char	**number;
 	int		i;
 
 	nums = ft_split(line, ' ');
+
 	i = 0;
 	while (nums[i])
 	{
-		z_line[i] = ft_atoi(nums[i]);
+		number = ft_split(nums[i], ',');
+		if(get_length(number) == 2)
+		{
+			color_line[i] = ft_atoi_base(number[1] + 2, 16);
+			printf("color is: %d\n", color_line[i]);
+		}
+		else if(ft_atoi(number[0]) > 0)
+			color_line[i] = 0xffffff;
+		else
+			color_line[i] = 0xe80c0c;
+		z_line[i] = ft_atoi(number[0]);
+		free_split(number);
 		free(nums[i]);
 		i++;
 	}
@@ -97,22 +120,27 @@ void	read_file(char *file_name, t_fdf *data)
 	data->height = get_height(file_name);
 	data->width = get_width(file_name);
 	data->z_matrix = (int **)malloc(sizeof(int *) * (data->height + 1));
+	data->color_matrix = (int **)malloc(sizeof(int *) * (data->height + 1));
 	iter = 0;
 	while (iter <= data->height)
-		data->z_matrix[iter++] = (int *)malloc(sizeof(int) * (data->width + 1));
+	{
+		data->z_matrix[iter] = (int *)malloc(sizeof(int) * (data->width + 1));
+		data->color_matrix[iter] = (int *)malloc(sizeof(int) * (data->width + 1));
+		iter++;
+	}
 	fd = open(file_name, O_RDONLY, 0);
 	iter = 0;
 	printf("\n------------FILLING_Z-MATRIX------------\n");
 	while (1)
 	{
 		line = get_next_line(fd);
-		printf("the line is: %s\n", line);
+		//printf("the line is: %s\n", line);
 		if (!line)
 		{
 			free(line);
 			break ;
 		}
-		fill_matrix(data->z_matrix[iter], line);
+		fill_matrix(data->z_matrix[iter], data->color_matrix[iter], line);
 		free(line);
 		iter++;
 	}

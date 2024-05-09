@@ -6,7 +6,7 @@
 /*   By: ruslannartdinov <ruslannartdinov@student.4 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 17:32:18 by rnartdin          #+#    #+#             */
-/*   Updated: 2024/04/29 11:29:12 by ruslannartdinov  ###   ########.fr       */
+/*   Updated: 2024/05/09 21:14:15 by ruslannartdinov  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,3 @@ int	ft_atoi(const char *str)
 	number = number * minus;
 	return (number);
 }
-// int main()
-// {
-// 	char str[] = "+47";
-// 	printf("%d\n", ft_atoi(str));
-// 	printf("%d\n", atoi(str));
-// 	return(0);
-// }

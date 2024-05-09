@@ -47,11 +47,12 @@ void	bresenham_draw(float x, float y, float x1, float y1, t_fdf *data)
 
 	z = data->z_matrix[(int)y][(int)x];
 	z1 = data->z_matrix[(int)y1][(int)x1];
+	data->color = data->color_matrix[(int)y][(int)x];
+	//data->color = 0xffffff;
 	add_zoom(&x, &y, data);
 	add_zoom(&x1, &y1, data);
 	z = (z * data->zoom) / 10;
 	z1 = (z1 * data->zoom) / 10;
-	color_choose(z, z1, data);
 	isometric(&x, &y, z, data);
 	isometric(&x1, &y1, z1, data);
 	add_shift(&x, &y, data);
