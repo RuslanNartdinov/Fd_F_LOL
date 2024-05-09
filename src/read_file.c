@@ -1,9 +1,21 @@
 #include "fd_f.h"
 
-//t_fdf	*struct_init(char* argv_1, t_fdf* data)
-//{
+t_fdf	*struct_init(char *argv_1)
+{
+	t_fdf	*data;
 
-//}
+	data = (t_fdf *)malloc(sizeof(t_fdf));
+	data->win_width = 1000;
+	data->win_length = 1000;
+	data->zoom = 10;
+	data->scale = 0.8;
+	data->shift_x = 0;
+	data->shift_y = 0;
+	data->x = 0;
+	data->y = 0;
+	read_file(argv_1, data);
+	return (data);
+}
 
 void	fill_matrix(int *z_line, int *color_line, char *line)
 {

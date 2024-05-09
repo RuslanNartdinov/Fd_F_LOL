@@ -83,16 +83,7 @@ int	main(int argc, char **argv)
 	t_fdf	*data;
 
 	(void)argc;
-	data = (t_fdf *)malloc(sizeof(t_fdf));
-	data->win_width = 1000;
-	data->win_length = 1000;
-	data->zoom = 10;
-	data->scale = 0.8;
-	data->shift_x = 0;
-	data->shift_y = 0;
-	data->x = 0;
-	data->y = 0;
-	read_file(argv[1], data);
+	data = struct_init(argv[1]);
 	if (data->height > 100 || data->width > 100)
 		data->zoom = 5;
 	data->mlx_ptr = mlx_init();
