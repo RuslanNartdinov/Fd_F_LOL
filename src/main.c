@@ -16,6 +16,15 @@ void	clean_struct(t_fdf *data)
 			}
 			free(data->z_matrix);
 		}
+		if (data->color_matrix)
+		{
+			while (i < data->height)
+			{
+				free(data->color_matrix[i]);
+				i++;
+			}
+			free(data->color_matrix);
+		}
 		free(data);
 	}
 }
