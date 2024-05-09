@@ -10,21 +10,16 @@ void	clean_struct(t_fdf *data)
 		if (data->z_matrix)
 		{
 			while (i < data->height)
-			{
-				free(data->z_matrix[i]);
-				i++;
-			}
+				free(data->z_matrix[i++]);
 			free(data->z_matrix);
 		}
 		if (data->color_matrix)
 		{
 			while (i < data->height)
-			{
-				free(data->color_matrix[i]);
-				i++;
-			}
+				free(data->color_matrix[i++]);
 			free(data->color_matrix);
 		}
+		free(data->mlx_ptr);
 		free(data);
 	}
 }
