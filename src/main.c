@@ -96,11 +96,15 @@ int	main(int argc, char **argv)
 	if (data->height > 100 || data->width > 100)
 		data->zoom = 5;
 	data->mlx_ptr = mlx_init();
-	data->win_ptr = mlx_new_window(data->mlx_ptr, data->win_width, data->win_length, "FDF");
-	data->mlx.img = mlx_new_image(data->mlx_ptr, data->win_width, data->win_width);
-	data->mlx.addr = mlx_get_data_addr(data->mlx.img, &data->mlx.bits_per_pixel, &data->mlx.line_length, &data->mlx.endian);
+	data->win_ptr = mlx_new_window(data->mlx_ptr, data->win_width,
+			data->win_length, "FDF");
+	data->mlx.img = mlx_new_image(data->mlx_ptr, data->win_width,
+			data->win_width);
+	data->mlx.addr = mlx_get_data_addr(data->mlx.img, &data->mlx.bits_per_pixel,
+			&data->mlx.line_length, &data->mlx.endian);
 	draw_map(data);
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->mlx.img, data->x, data->y);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		data->mlx.img, data->x, data->y);
 	mlx_key_hook(data->win_ptr, deal_key, data);
 	mlx_hook(data->win_ptr, 17, 1L << 0, close_win, data);
 	mlx_loop(data->mlx_ptr);

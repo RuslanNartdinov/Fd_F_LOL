@@ -1,5 +1,10 @@
 #include "fd_f.h"
 
+//t_fdf	*struct_init(char* argv_1, t_fdf* data)
+//{
+
+//}
+
 void	fill_matrix(int *z_line, int *color_line, char *line)
 {
 	char	**nums;
@@ -12,10 +17,7 @@ void	fill_matrix(int *z_line, int *color_line, char *line)
 	{
 		number = ft_split(nums[i], ',');
 		if (get_length(number) == 2)
-		{
 			color_line[i] = ft_atoi_base(number[1] + 2, 16);
-			printf("color is: %d\n", color_line[i]);
-		}
 		else if (ft_atoi(number[0]) > 0)
 			color_line[i] = 0xffffff;
 		else

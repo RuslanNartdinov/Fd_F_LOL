@@ -33,9 +33,17 @@ typedef struct s_fdf
 	float	scale;
 }	t_fdf;
 
+typedef struct s_cd
+{
+	float	x;
+	float	x1;
+	float	y;
+	float	y1;
+}	t_cd;
+
 int		ft_atoi_base(const char *str, int str_base);
 void	read_file(char *file_name, t_fdf *data);
-void	bresenham_draw(float x, float y, float x1, float y1, t_fdf *data);
+void	bresenham_draw(t_cd *cd, t_fdf *data);
 void	draw_map(t_fdf *data);
 float	max(float first, float second);
 float	module(float num);
@@ -49,4 +57,5 @@ int		get_height(char *file_name);
 void	free_split(char **splitted_arr);
 int		get_width(char *file_name);
 int		get_length(char **splitted_line);
+void	add_zoom(float *x, float *y, t_fdf *data);
 #endif

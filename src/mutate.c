@@ -1,5 +1,11 @@
 #include "fd_f.h"
 
+void	add_zoom(float *x, float *y, t_fdf *data)
+{
+	*x *= data->zoom;
+	*y *= data->zoom;
+}
+
 void	shift_xy(t_fdf *data, int key)
 {
 	if (key == 126)
