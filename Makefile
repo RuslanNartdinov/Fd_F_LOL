@@ -3,6 +3,7 @@ SRC_FILES = src/draw.c \
 			src/mathematics.c \
 			src/mutate.c \
 			src/read_file.c \
+			src/get.c \
 
 HELPERS_FILES = helpers/ft_split.c \
 				helpers/ft_atoi.c \

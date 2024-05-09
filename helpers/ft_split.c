@@ -6,7 +6,7 @@
 /*   By: ruslannartdinov <ruslannartdinov@student.4 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 15:22:11 by rnartdin          #+#    #+#             */
-/*   Updated: 2024/04/29 11:32:26 by ruslannartdinov  ###   ########.fr       */
+/*   Updated: 2024/05/09 22:44:10 by ruslannartdinov  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	check(char a, char c)
 		return (1);
 	return (0);
 }
+
 char	*duplicate_and_cut(char const **src, int size)
 {
 	int		iterator;

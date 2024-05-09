@@ -16,11 +16,11 @@ void	rotate(t_fdf *data, int key)
 {
 	if (key == 43)
 	{
-			data->scale += 0.1;
+		data->scale += 0.1;
 	}
 	else
 	{
-			data->scale -= 0.1;
+		data->scale -= 0.1;
 	}
 }
 

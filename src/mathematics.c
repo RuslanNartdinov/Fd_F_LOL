@@ -36,7 +36,7 @@ int	ft_atoi_base(const char *str, int str_base)
 		str++;
 	}
 	while (*str != '\0')
-	{	
+	{
 		if (*str >= '0' && *str <= '9')
 			res = res * str_base + *str - 48;
 		else if (*str >= 'A' && *str <= 'F')

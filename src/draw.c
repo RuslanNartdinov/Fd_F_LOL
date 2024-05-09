@@ -12,14 +12,6 @@ void	add_shift(float *x, float *y, t_fdf *data)
 	*y += data->shift_y;
 }
 
-void	color_choose(int z, int z1, t_fdf *data)
-{
-	if (z > 0 || z1 > 0)
-		data->color = 0xe80c0c;
-	else
-		data->color = 0xffffff;
-}
-
 void	my_mlx_pixel_put(t_fdf *data, int x, int y, int color)
 {
 	char	*dst;
@@ -29,14 +21,11 @@ void	my_mlx_pixel_put(t_fdf *data, int x, int y, int color)
 	if ((x >= 0 && y >= 0) && \
 			(x < data->win_width && y < data->win_length))
 	{
-		dst = data->mlx.addr + (y * data->mlx.line_length+ x * \
+		dst = data->mlx.addr + (y * data->mlx.line_length + x * \
 				(data->mlx.bits_per_pixel / 8));
 		*(unsigned int *)dst = color;
 	}
 }
-
-
-
 
 void	bresenham_draw(float x, float y, float x1, float y1, t_fdf *data)
 {
@@ -48,7 +37,6 @@ void	bresenham_draw(float x, float y, float x1, float y1, t_fdf *data)
 	z = data->z_matrix[(int)y][(int)x];
 	z1 = data->z_matrix[(int)y1][(int)x1];
 	data->color = data->color_matrix[(int)y][(int)x];
-	//data->color = 0xffffff;
 	add_zoom(&x, &y, data);
 	add_zoom(&x1, &y1, data);
 	z = (z * data->zoom) / 10;
